@@ -16,11 +16,11 @@ class Welcome extends CI_Controller
         
     }
 
-    public function showTop($number) {
-    	$result = $this->funda_makelaar->getTop(10);
+    public function showTop($number)
+    {
+        $result = $this->funda_makelaar->getTop(10);
 
-    	var_dump($result);
-    	$this->load->view('welcome_message');
+        $data['records'] = $result;
+        $this->load->view('top_list', $data);
     }
-
 }
