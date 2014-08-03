@@ -18,7 +18,8 @@ class Welcome extends CI_Controller
 
     public function showTop($number)
     {
-        $result = $this->funda_makelaar->getTop(10);
+        //Get the top X records from the makelaar filled table
+        $result = $this->funda_makelaar->getTop($number);
 
         $data['records'] = $result;
         $this->load->view('top_list', $data);
