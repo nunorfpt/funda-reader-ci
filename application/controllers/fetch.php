@@ -69,14 +69,16 @@ class Fetch extends CI_Controller
             $array['objects_returned'] = count($ret1['Objects']);
             $this->funda_request->insert($array);
             
-            //Loop the array of objects in this page
-            foreach ($ret1['Objects'] as $obj) {
-                // unit test to check if it is an object
-                //echo $this->unit->run($obj, 'is_array');
-                $values['MakelaarId'] = $obj['MakelaarId'];
-                $values['MakelaarNaam'] = $obj['MakelaarNaam'];
-                // Insert makelaar values in the database
-                $this->funda_makelaar->insert($values);
+            if($ret1['Objects']) {
+                //Loop the array of objects in this page
+                foreach ($ret1['Objects'] as $obj) {
+                    // unit test to check if it is an object
+                    //echo $this->unit->run($obj, 'is_array');
+                    $values['MakelaarId'] = $obj['MakelaarId'];
+                    $values['MakelaarNaam'] = $obj['MakelaarNaam'];
+                    // Insert makelaar values in the database
+                    $this->funda_makelaar->insert($values);
+                }
             }
 
 
